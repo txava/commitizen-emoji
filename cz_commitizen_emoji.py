@@ -113,12 +113,6 @@ class CommitizenEmojiCz(BaseCommitizen):
             },
             {
                 "type": "input",
-                "name": "time",
-                "message": "Time spent (i.e. 3h 15m) (optional):\n",
-                "filter": lambda x: "⏰ " + x.strip() if x else "",
-            },
-            {
-                "type": "input",
                 "name": "tasks",
                 "message": "Tasks ID(s) separated by spaces (optional):\n",
                 "filter": lambda x: x.strip() if x else "",
@@ -147,7 +141,6 @@ class CommitizenEmojiCz(BaseCommitizen):
         subject = answers["subject"]
         body = answers["body"]
         is_breaking_change = answers["is_breaking_change"]
-        time = answers["time"]
         tasks = answers["tasks"]
         extra = ''
 
@@ -158,8 +151,6 @@ class CommitizenEmojiCz(BaseCommitizen):
         if body:
             body = f"\n\n{body}"
 
-        if time:
-            extra += f" >>> {time}"
         if tasks:
             tasks_text = ' '.join([f'#{task_id}' for task_id in tasks.split()])
             extra += f" >>> Tasks: {tasks_text}"

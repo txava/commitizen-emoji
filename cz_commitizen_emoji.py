@@ -160,4 +160,11 @@ class CommitizenEmojiCz(BaseCommitizen):
         return message
 
 
-discover_this = CommitizenEmojiCz
+    def schema_pattern(self) -> str:
+        PATTERN = (
+            r"(🐛 fix|🎉 feat|📜 docs|😎 style|🔧 refactor|🚀 perf|🚦 test|🚧 build)"
+            r"(\(\S+\))?!?:(\s.*)"
+        )
+        return PATTERN
+
+discover_this = CommitizenEmojiCziscover_this = CommitizenEmojiCz
